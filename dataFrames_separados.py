@@ -13,6 +13,22 @@ y = breast_cancer_wisconsin_diagnostic.data.targets
 # oncatenate features and targets into a single dataframe
 dataframe = pd.concat([X, y], axis=1)
 
+# Listar todas as colunas
+todas_as_colunas = dataframe.columns.tolist()
+
+# Encontrar os índices das colunas de início e fim
+inicio = todas_as_colunas.index('radius2')
+fim = todas_as_colunas.index('fractal_dimension3') + 1  # Inclui 'Diagnosis' na seleção
+
+# Selecionar as colunas a serem deletadas
+colunas_para_deletar = todas_as_colunas[inicio:fim]
+
+# Deletar as colunas do DataFrame
+dataframe = dataframe.drop(colunas_para_deletar, axis=1)
+
+# Exibir o DataFrame modificado
+#print(dataframe.head())
+
 #print(dataframe)
 
 def separa_dataframe(DataFrame,value):
