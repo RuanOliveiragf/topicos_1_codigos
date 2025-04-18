@@ -42,3 +42,23 @@ dataframe_maligno = separa_dataframe(dataframe, 'M')
 print(dataframe_benigno)
 
 print(dataframe_maligno)
+
+import matplotlib.pyplot as plt
+
+# Lista de atributos numéricos (exceto 'Diagnosis')
+atributos_numericos = dataframe_benigno.columns.drop('Diagnosis')
+
+# Função para desenhar boxplot para cada atributo
+
+plt.figure(figsize=(10, 5))
+plt.boxplot(
+    [dataframe_benigno['radius1'], dataframe_benigno['texture1'],dataframe_benigno['perimeter1']],
+    labels=['Radius', 'Texture','Perimeter']
+)
+plt.title(f'Boxplot para benigno')
+plt.ylabel('Valores')
+plt.show()
+
+
+
+
